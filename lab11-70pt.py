@@ -10,7 +10,7 @@
 from Tkinter import *
 root = Tk()
 # Create the canvas widget
-drawpad = Canvas(root, width=800,height=600, background='red')
+drawpad = Canvas(root, width=800,height=600, background='black')
 drawpad.grid(row=0, column=0)
 
 # Create the oval
@@ -21,12 +21,12 @@ def animate():
     global direction
     # Get the x and y co-ordinates of the circle
     x1, y1, x2, y2 = drawpad.coords(circle)
-    if x2 > drawpad.winfo_width(): 
+    if y2 > drawpad.winfo_height(): 
         direction = - 5
-    elif x1 < 0:
+    elif y1 < 0:
         direction = 5
     #Move our oval object by the value of direction
-    drawpad.move(circle,direction,0)
+    drawpad.move(circle,0,direction)
     # Wait for 1 millisecond, then recursively call our animate function
     drawpad.after(1, animate)
 
